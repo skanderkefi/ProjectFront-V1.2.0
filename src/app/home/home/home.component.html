@@ -1,0 +1,39 @@
+<br>
+<blockquote class="blockquote text-center">
+    <p class="mb-0">{{ 'HOME.TITLE' | translate }}</p>
+    <footer class="blockquote-footer">{{ 'HOME.MINITITLE' | translate }}
+    </footer>
+  </blockquote>
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">{{ 'HOME.FNT' | translate }}</th>
+            <th scope="col">{{ 'HOME.LNT' | translate }}</th>
+            <th scope="col">{{ 'HOME.EMT' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let user of users'>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.emailId}}</td>
+          </tr>
+          </tbody>
+      </table>
+      
+      
+</div>
+<br>
+<br>
+<br>
+
+<div>
+  <label>
+    {{ 'LOGIN.SELECT' | translate }}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+  </label>
+</div>

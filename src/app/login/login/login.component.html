@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+<form (submit)="loginF()">
+  <h4><i>{{ 'LOGIN.TITLE' | translate }}</i></h4>
+
+    <label>
+      <p class="label-txt">{{ 'LOGIN.EMAILATRB' | translate }}</p>
+      <input type="text" class="input"  name ="email" id="email" [(ngModel)]='login.email' >
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">{{ 'LOGIN.PASSWORDATR' | translate }}</p>
+      <input type="text" class="input"  name ="firstname" id="firstname" [(ngModel)]='login.password' >
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit">submit</button> 
+
+    </form>
+  </div>
+    <br>
+    <br>
+    <br>
+
+    <div>
+      <label>
+        {{ 'LOGIN.SELECT' | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+        </select>
+      </label>
+    </div>

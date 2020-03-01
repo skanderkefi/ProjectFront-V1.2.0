@@ -1,0 +1,62 @@
+  <form (submit)="addFct()">
+    <h4><i>{{ 'SIGNIN.TITLE' | translate }}</i></h4>
+    <label>
+      <p class="label-txt">{{ 'SIGNIN.EMAILATRB' | translate }}</p>
+      <input type="text" class="input" [(ngModel)]='user.emailId' name ="email" id="email"
+      #myemail="ngModel" required minlength="3" maxlength="35">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">{{ 'SIGNIN.FNAMEATRB' | translate }}</p>
+      <input type="text" class="input" [(ngModel)]='user.firstName' name ="firstname" id="firstname"
+      #fname="ngModel" required minlength="3" maxlength="20">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+        <p class="label-txt">{{ 'SIGNIN.LNAMEORDATR' | translate }}</p>
+        <input type="text" class="input" [(ngModel)]='user.lastName' name ="lastname" id="lastname"
+        #lname="ngModel" required minlength="3" maxlength="20">
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label>
+        <p class="label-txt">{{ 'SIGNIN.PASSWORDATR' | translate }}</p>
+        <input type="password" class="input" [(ngModel)]='user.passWord' name ="password" id="password"
+        #pword="ngModel" required minlength="3" >
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+    <button type="submit">submit</button> 
+
+    
+    <div *ngIf="myemail.errors?.required && myemail.touched" class="alert alert-danger">{{ 'SIGNIN.EMAILATRBERROR' | translate }}</div>
+    <div *ngIf="myemail.errors?.minlength && myemail.touched" class="alert alert-danger">{{ 'SIGNIN.EMAILATRBERRORMIN' | translate }}</div>
+    <div *ngIf="myemail.errors?.maxlength && myemail.touched" class="alert alert-danger">{{ 'SIGNIN.EMAILATRBERRORMAX' | translate }}</div>
+
+    <div *ngIf="fname.errors?.required && fname.touched" class="alert alert-danger">{{ 'SIGNIN.FNAMEATRBERROR' | translate }}</div>
+    <div *ngIf="fname.errors?.minlength && fname.touched" class="alert alert-danger">{{ 'SIGNIN.FNAMEATRBERRORMIN' | translate }}</div>
+    <div *ngIf="fname.errors?.maxlength && fname.touched" class="alert alert-danger">{{ 'SIGNIN.FNAMEATRBERRORMAX' | translate }}</div>
+
+    <div *ngIf="lname.errors?.required && lname.touched" class="alert alert-danger">{{ 'SIGNIN.LNAMEORDATRERROR' | translate }}</div>
+    <div *ngIf="lname.errors?.minlength && lname.touched" class="alert alert-danger">{{ 'SIGNIN.LNAMEORDATRERRORMIN' | translate }}</div>
+    <div *ngIf="lname.errors?.maxlength && lname.touched" class="alert alert-danger">{{ 'SIGNIN.LNAMEORDATRERRORMAX' | translate }}</div>
+
+    <div *ngIf="pword.errors?.required && pword.touched" class="alert alert-danger">{{ 'SIGNIN.PASSWORDATRERROR' | translate }}</div>
+    <div *ngIf="pword.errors?.minlength && pword.touched" class="alert alert-danger">{{ 'SIGNIN.PASSWORDATRERRORMIN' | translate }}</div>
+  </form>
+
+
+  <div>
+    <label>
+      {{ 'SIGNIN.SELECT' | translate }}
+      <select #langSelect (change)="translate.use(langSelect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+      </select>
+    </label>
+  </div>
